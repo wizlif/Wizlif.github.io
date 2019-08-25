@@ -3,7 +3,7 @@ $(document).ready(function () {
     // PRELOADER
     $('#preloader').delay(500).fadeOut('slow'); // will fade out the white DIV that covers the website.
 
-        // PAGE LOADER
+    // PAGE LOADER
     jQuery('#grid-container').on('initComplete.cbp', function () {
         if ($('#ajax-tab-container').length) {
             $('#ajax-tab-container').easytabs({
@@ -13,19 +13,20 @@ $(document).ready(function () {
     });
 
     // RESPONSIVE MENU
-    function transform(){
+    function transform() {
         var outdiv = '<div class="menuout"><div class="menuin"><ul class="tabs"></ul></div></div>';
         $(outdiv).appendTo("nav");
         var resmenus = $('.tabs').html();
         $(".menuout .menuin .tabs").append(resmenus);
-       $('.menuin').hide(); 
+        $('.menuin').hide();
     }
+
     transform();
-    $('.hamburger').on('click', function() {
-       $('.menuin').slideToggle(); 
+    $('.hamburger').on('click', function () {
+        $('.menuin').slideToggle();
     });
     $('.menuout').on('click', function () {
-        $('.menuin').slideUp();  
+        $('.menuin').slideUp();
     });
 
     // OWL CAROUSEL GENERAL JS
@@ -52,32 +53,35 @@ $(document).ready(function () {
         gapHorizontal: 0,
         singlePageAnimation: 'fade',
         mediaQueries: [{
-                width: 700,
-                cols: 3,
-            }, {
-                width: 480,
-                cols: 2,
-                options: {
-                    caption: '',
-                    gapHorizontal: 30,
-                    gapVertical: 20,
-                }
-            }, {
-                width: 320,
-                cols: 1,
-                options: {
-                    caption: '',
-                    gapHorizontal: 50,
-                }
-            }],            
+            width: 700,
+            cols: 3,
+        }, {
+            width: 480,
+            cols: 2,
+            options: {
+                caption: '',
+                gapHorizontal: 30,
+                gapVertical: 20,
+            }
+        }, {
+            width: 320,
+            cols: 1,
+            options: {
+                caption: '',
+                gapHorizontal: 50,
+            }
+        }],
         singlePageCallback: function (url, element) {
             var t = this;
             $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'html',
-                    timeout: 30000
-                })
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 30000,
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
                 .done(function (result) {
                     t.updateSinglePage(result);
                 })
@@ -85,14 +89,14 @@ $(document).ready(function () {
                     t.updateSinglePage('AJAX Error! Please refresh the page!');
                 });
         },
-            plugins: {
-                loadMore: {
-                    element: '#js-loadMore-agency',
-                    action: 'click',
-                    loadItems: 3,
-                }
+        plugins: {
+            loadMore: {
+                element: '#js-loadMore-agency',
+                action: 'click',
+                loadItems: 3,
             }
-    }); 
+        }
+    });
 
     // BLOG CONTENT  
     $('#grid-blog').cubeportfolio({
@@ -101,32 +105,32 @@ $(document).ready(function () {
         gapVertical: 0,
         gapHorizontal: 0,
         mediaQueries: [{
-                width: 700,
-                cols: 3,
-            }, {
-                width: 480,
-                cols: 2,
-                options: {
-                    caption: '',
-                    gapHorizontal: 30,
-                    gapVertical: 20,
-                }
-            }, {
-                width: 320,
-                cols: 1,
-                options: {
-                    caption: '',
-                    gapHorizontal: 50,
-                }
-            }],
-            plugins: {
-                loadMore: {
-                    element: '#load-posts',
-                    action: 'click',
-                    loadItems: 3,
-                }
+            width: 700,
+            cols: 3,
+        }, {
+            width: 480,
+            cols: 2,
+            options: {
+                caption: '',
+                gapHorizontal: 30,
+                gapVertical: 20,
             }
-    }); 
+        }, {
+            width: 320,
+            cols: 1,
+            options: {
+                caption: '',
+                gapHorizontal: 50,
+            }
+        }],
+        plugins: {
+            loadMore: {
+                element: '#load-posts',
+                action: 'click',
+                loadItems: 3,
+            }
+        }
+    });
 
     // GALLERY WIDGET  
     $('#widget-gallery').cubeportfolio({
@@ -135,25 +139,25 @@ $(document).ready(function () {
         gapVertical: 0,
         gapHorizontal: 0,
         mediaQueries: [{
-                width: 700,
-                cols: 4,
-            }, {
-                width: 480,
-                cols: 2,
-                options: {
-                    caption: '',
-                    gapHorizontal: 30,
-                    gapVertical: 20,
-                }
-            }, {
-                width: 320,
-                cols: 1,
-                options: {
-                    caption: '',
-                    gapHorizontal: 50,
-                }
-            }]
-    }); 
+            width: 700,
+            cols: 4,
+        }, {
+            width: 480,
+            cols: 2,
+            options: {
+                caption: '',
+                gapHorizontal: 30,
+                gapVertical: 20,
+            }
+        }, {
+            width: 320,
+            cols: 1,
+            options: {
+                caption: '',
+                gapHorizontal: 50,
+            }
+        }]
+    });
 
 }); // document ready end 
 
@@ -162,10 +166,7 @@ $(document).ready(function () {
 $(window).load(function () {
 
 
-
-
-
-}); // window load end 
+}); // window load end
 
 
 

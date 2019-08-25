@@ -1,0 +1,14 @@
+User-Agent: *
+Disallow:
+Disallow: /portfolio-detail
+Allow: /
+Disallow: /load-more
+Disallow: /js
+Allow: /images
+Disallow: /icon-fonts
+Disallow: /fonts
+Disallow: /blog-posts
+Allow: /index.html
+Disallow: /cubeportfolio
+
+Sitemap: https://wizlif.hithub.io/sitemap.xml
