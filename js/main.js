@@ -72,22 +72,28 @@ $(document).ready(function () {
             }
         }],
         singlePageCallback: function (url, element) {
+            window.open(url,'_blank');
             var t = this;
-            $.ajax({
-                url: url,
-                type: 'GET',
-                dataType: 'html',
-                timeout: 30000,
-                headers: {
-                    'Access-Control-Allow-Origin': '*'
-                }
-            })
-                .done(function (result) {
-                    t.updateSinglePage(result);
-                })
-                .fail(function () {
-                    t.updateSinglePage('AJAX Error! Please refresh the page!');
-                });
+            var data = '<div style="position:relative;height: calc(100vh - 100px)" class="col-xs-12"><iframe src="' + url + '" frameborder="0" allowfullscreen\n' +
+                '    style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>';
+            //
+            // console.log(data);
+            t.updateSinglePage(data);
+            // $.ajax({
+            //     url: url,
+            //     type: 'GET',
+            //     dataType: 'html',
+            //     timeout: 30000,
+            //     headers: {
+            //         'Access-Control-Allow-Origin': '*'
+            //     }
+            // })
+            //     .done(function (result) {
+            //         t.updateSinglePage(result);
+            //     })
+            //     .fail(function () {
+            //         t.updateSinglePage('AJAX Error! Please refresh the page!');
+            //     });
         },
         plugins: {
             loadMore: {
